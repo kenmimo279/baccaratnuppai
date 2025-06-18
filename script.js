@@ -11,30 +11,25 @@ function analyze() {
   const main = input.slice(0, 3).split("");
   const sub = input.slice(3, 6).split("");
 
-  // Step 1: Check if main has 3 identical → use sub instead
-  let reference = null;
-  if (main.every(v => v === main[0])) {
-    if (sub.every(v => v === sub[0])) {
-      currentPrediction = { predict: "✕", actual: "-", result: "✕" };
-      updateView();
-      return;
-    } else {
-      reference = sub;
-    }
-  } else {
-    reference = main;
+  // Check if both strings identical -> skip
+  if (main.every(v => v === main[0]) && sub.every(v => v === sub[0])) {
+    history.push({ predict: "✕", actual: "✕", result: "✕" });
+    updateView();
+    document.getElementById("input").value = "";
+    return;
   }
 
-  // Step 2: Find the minority
-  let count = {};
-  for (let i = 0; i < 3; i++) {
-    count[reference[i]] = (count[reference[i]] || 0) + 1;
-  }
-  let minority = Object.entries(count).sort((a,b)=>a[1]-b[1])[0][0];
-  let idx = reference.indexOf(minority);
+  // Choose reference
+  const reference = (main.every(v => v === main[0])) ? sub : main;
+  const refOther  = (reference === main) ? sub : main;
 
-  // Step 3: Compare same index value
-  let predict = main[idx] === sub[idx] ? "p" : "b";
+  // Find minority
+  const count = {};
+  reference.forEach(c => count[c] = (count[c] || 0) + 1);
+  const minority = Object.keys(count).sort((a,b) => count[a]-count[b])[0];
+  const idx = reference.indexOf(minority);
+
+  const predict = (refOther[idx] === minority) ? 'p' : 'b';
 
   currentPrediction = { predict, actual: "-", result: "รอผล" };
   updateView();
