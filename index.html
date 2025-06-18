@@ -9,11 +9,16 @@
 <body>
   <div class="container">
     <h1>วิเคราะห์บาคาร่า</h1>
-    <input id="input" maxlength="7" placeholder="กรอกเช่น ppbpbbp" />
-    <button onclick="analyze()">คำนวณ</button>
-    <button onclick="resetAll()">รีเซ็ต</button>
+    <input id="input" maxlength="6" placeholder="กรอก 6 ตัว เช่น ppbpbb" />
+    <button onclick="analyze()">ทำนาย</button>
     <div id="result"></div>
+    <div class="result-buttons">
+      <button onclick="setResult('p')">P</button>
+      <button onclick="setResult('b')">B</button>
+      <button onclick="setResult('t')">T</button>
+    </div>
     <div id="dna"></div>
+    <button onclick="resetAll()">รีเซ็ตทั้งหมด</button>
   </div>
   <script src="script.js"></script>
 </body>

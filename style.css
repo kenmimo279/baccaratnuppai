@@ -24,9 +24,14 @@ input {
 button {
   padding: 10px 15px;
   font-size: 16px;
-  margin-right: 10px;
+  margin: 5px;
+}
+.result-buttons {
+  text-align: center;
+  margin: 15px 0;
 }
 #result, #dna {
-  margin-top: 20px;
+  margin-top: 10px;
   font-size: 18px;
+  text-align: center;
 }
