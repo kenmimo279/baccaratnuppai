@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>วิเคราะห์บาคาร่า - ล็อกสูตร</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🔍 ระบบวิเคราะห์บาคาร่า</h1>
+    <form id="form">
+      <label>เค้าไพ่หลัก (3 ตัว):</label>
+      <input type="text" id="main" maxlength="3" placeholder="เช่น pbb" required />
+      <label>เค้าไพ่รอง (3 ตัว):</label>
+      <input type="text" id="askb" maxlength="3" placeholder="เช่น bpb" required />
+      <button type="submit">ทำนาย</button>
+    </form>
+    <div id="result"></div>
+
+    <div id="dna-log">
+      <h3>DNA</h3>
+      <div id="dna"></div>
+    </div>
+
+    <div id="actual-result">
+      <h3>ใส่ผลจริง (P / B / T):</h3>
+      <input type="text" id="actual" maxlength="1" />
+      <button onclick="submitActual()">ยืนยันผลจริง</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
